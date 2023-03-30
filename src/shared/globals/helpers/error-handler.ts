@@ -1,6 +1,6 @@
 import { NextFunction,Request,Response } from "express";
 import { StatusCodes  } from "http-status-codes";
-import { createLogger } from "src/config/config";
+import createLogger from '@config/config'
 
 
 export interface IError {
@@ -32,7 +32,7 @@ export const notAuthorizedHandler = (err: IError, req: Request, res: Response, n
     if (err.status === StatusCodes.UNAUTHORIZED) {
         res.status(StatusCodes.UNAUTHORIZED).send('Not authorized');
     } else {
-        
+
         next(err);
     }
 }

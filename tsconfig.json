@@ -2,7 +2,7 @@
     "compilerOptions": {
       "target": "es2015",
       "module": "commonjs",
-      "lib": ["DOM", "ES2020"],
+      "lib": ["DOM", "ES2015"],
       "baseUrl": ".",
       "outDir": "./build",
       "rootDir": "src",
@@ -18,7 +18,25 @@
       "forceConsistentCasingInFileNames": true,
       "allowSyntheticDefaultImports": true,
       "pretty": true,
-      "resolveJsonModule": true
+      "resolveJsonModule": true,
+      "plugins": [
+        {
+          "transform": "ts-transform-paths",
+        },
+        { "transform": "transformer-module", "type": "compilerOptions" },
+        {
+           "transform": "ts-transform-paths","afterDeclarations": true
+        }
+      ],
+      "paths": {
+      "@global/*": ["src/shared/globals/*"],
+      "@services/*": ["src/shared/services/*"],
+      "@sockets/*": ["src/shared/sockets/*"],
+      "@workers/*": ["src/shared/workers/*"],
+      "@config/*": ["src/config/*"],
+      "@root/*": ["src/*"],
+
+
+      }
     }
   }
-  
